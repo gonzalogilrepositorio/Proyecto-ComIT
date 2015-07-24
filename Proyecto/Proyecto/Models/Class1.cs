@@ -7,5 +7,6 @@ namespace Proyecto.Models
 {
     public class Class1
     {
+        //kasjndlsadsljad
     }
 }
