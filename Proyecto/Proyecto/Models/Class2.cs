@@ -8,7 +8,5 @@ namespace Proyecto.Models
     public class Class2
     {
         //fasdfdafasf
-
-
     }
 }
