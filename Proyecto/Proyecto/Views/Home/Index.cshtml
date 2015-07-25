@@ -1,31 +1,128 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿
+    <!-- aca empieza la parte del buscador por filtros -->
+    <div class="container-fluid">
+        </br>
+        <div class="row" style="background-color: rgba(204, 44, 21, 0.70); padding-bottom: 20px; padding-top: 10px;">
+            <div class="col-lg-3">
+                <div class="col-lg-12">
+                    <label for="select" class="col-lg-12 control-label"><b>Localidad</b></label>
+                    <select class="form-control" id="select">
+                        <!--Aca traer las localidades y demas desde las tablas -->
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+            </div>
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+            <div class="col-lg-3">
+                <div class="col-lg-12">
+                    <label for="select" class="col-lg-12 control-label"><b>Tipo de Propiedad</b></label>
+                    <select class="form-control" id="select">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="col-lg-12">
+                    <label for="select" class="col-lg-12 control-label"><b>Operacion</b></label>
+                    <select class="form-control" id="select">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="col-lg-12">
+                    <label for="botonBuscar" class="col-lg-12 control-label"><b>Comience Su Busqueda</b></label>
+                    <button type="button" class="btn btn-default col-lg-12" id="botonBuscar">Buscar</button>
+                </div>
+            </div>
+        </div>
+    </div><!-- aca termina la parte de la busqueda por filtros-->
+    </br>
+    <!-- aca empieza la parte de los paneles con los avisos  -->
+    <div class="row">
+        <div class="col-lg-4" style="padding-top: 20px;">
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Titulo del Aviso</h3>
+                </div>
+
+                <div class="panel-body">
+                    <div class="col-lg-4"><img class="img-responsive" alt="" src="http://placehold.it/300x200" /></div>
+                    <div class="col-lg-8">
+                        ALIANZA ALQUILA, CASA INDIVIDUAL EN LA CIUDAD DE LA PUNTA, 1 DORMITORIO, COCINA COMEDOR, BAÑO, PATIO, ENTRADA PARA AUTO, TODOS LOS SERVICIOS. PRECIO MENSUAL $3500. CUNSULTAS AL 2664320263.
+                        <a href="/publicacion.html">Ver mas</a>
+                    </div>
+
+                </div>
+                <div class="panel-footer" style="text-align: right;font-size: small;">Viernes, 10 de Julio, 16:50 HS</div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-4" style="padding-top: 20px;">
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Titulo del Aviso</h3>
+                </div>
+
+                <div class="panel-body">
+                    <div class="col-lg-4"><img class="img-responsive" alt="" src="http://placehold.it/300x200" /></div>
+                    <div class="col-lg-8">
+                        ALIANZA ALQUILA, CASA INDIVIDUAL EN LA CIUDAD DE LA PUNTA, 1 DORMITORIO, COCINA COMEDOR, BAÑO, PATIO, ENTRADA PARA AUTO, TODOS LOS SERVICIOS. PRECIO MENSUAL $3500. CUNSULTAS AL 2664320263.
+                        <a href="/publicacion.html">Ver mas</a>
+                    </div>
+                </div>
+                <div class="panel-footer" style="text-align: right;font-size: small;">Viernes, 10 de Julio, 16:50 HS</div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-4" style="padding-top: 20px;">
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Titulo del Aviso</h3>
+                </div>
+
+                <div class="panel-body">
+                    <div class="col-lg-4"><img class="img-responsive" alt="" src="http://placehold.it/300x200" /></div>
+                    <div class="col-lg-8">
+                        ALIANZA ALQUILA, CASA INDIVIDUAL EN LA CIUDAD DE LA PUNTA, 1 DORMITORIO, COCINA COMEDOR, BAÑO, PATIO, ENTRADA PARA AUTO, TODOS LOS SERVICIOS. PRECIO MENSUAL $3500. CUNSULTAS AL 2664320263.
+                        <a href="/publicacion.html">Ver mas</a>
+                    </div>
+                </div>
+                <div class="panel-footer" style="text-align: right;font-size: small;">Viernes, 10 de Julio, 16:50 HS</div>
+            </div>
+
+        </div>
+
+    </div>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+<!-- aca esta el paginador -->
+<div class="col-lg-4 col-lg-offset-4" style="text-align: center">
+    <ul class="pagination pagination-sm">
+        <li class="disabled"><a href="#">«</a></li>
+        <li class="active"><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">»</a></li>
+    </ul>
 </div>
