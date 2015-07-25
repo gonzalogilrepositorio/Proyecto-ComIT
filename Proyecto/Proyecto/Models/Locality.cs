@@ -5,8 +5,9 @@ using System.Web;
 
 namespace Proyecto.Models
 {
-    public class Class2
+    public class Locality
     {
-        //fasdfdafasf
+        public int IdLocality { get; set; }
+        public string LocalityName { get; set; }
     }
 }
