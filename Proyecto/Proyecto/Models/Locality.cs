@@ -7,7 +7,7 @@ namespace Proyecto.Models
 {
     public class Locality
     {
-        public int IdLocality { get; set; }
-        public string LocalityName { get; set; }
+        public int Id { get; set; }
+        public string Nombre { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Proyecto.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -18,8 +19,8 @@ namespace Proyecto
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            //esta linea formatea la bd cada vez que se compila o ejecuta?
-            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<NuestroContextoDb>());
+            //esta linea formatea la bd cada vez que se ejecuta?
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<AspNetContexto>());
         }
     }
 }

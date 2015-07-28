@@ -7,8 +7,8 @@ namespace Proyecto.Models
 {
     public class Category
     {
-        public int IdCategory { get; set; }
-        public string CategoryName { get; set; }
+        public int Id { get; set; }
+        public string Nombre { get; set; }
 
     }
 }

@@ -5,12 +5,10 @@
             <div class="col-lg-12">
                 <label for="select" class="col-lg-12 control-label"><b>Localidad</b></label>
                 <select class="form-control" id="select">
-                    <!--Aca traer las localidades y demas desde las tablas -->
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    @foreach (Proyecto.Models.Locality l in ViewBag.Localidades)
+                    {
+                        <option value="@l.Id">@l.Nombre</option>
+                    }
                 </select>
             </div>
         </div>
@@ -19,11 +17,10 @@
             <div class="col-lg-12">
                 <label for="select" class="col-lg-12 control-label"><b>Tipo de Propiedad</b></label>
                 <select class="form-control" id="select">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    @foreach (Proyecto.Models.PropertyType t in ViewBag.Tipos)
+                    {
+                        <option value="@t.Id">@t.Nombre</option>
+                    }
                 </select>
             </div>
         </div>
@@ -32,11 +29,10 @@
             <div class="col-lg-12">
                 <label for="select" class="col-lg-12 control-label"><b>Operacion</b></label>
                 <select class="form-control" id="select">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    @foreach (Proyecto.Models.Category c in ViewBag.Categorias)
+                    {
+                        <option value="@c.Id">@c.Nombre</option>
+                    }
                 </select>
             </div>
         </div>
@@ -51,25 +47,29 @@
     <br/>
     <!-- aca empieza la parte de los paneles con los avisos  -->
     <div class="row">
-        <div class="col-lg-4" style="padding-top: 20px;">
+        @foreach (Proyecto.Models.Property p in ViewBag.Propiedades)
+        {
+            <div class="col-lg-4" style="padding-top: 20px;">
 
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Titulo del Aviso</h3>
-                </div>
-
-                <div class="panel-body">
-                    <div class="col-lg-4"><img class="img-responsive" alt="" src="http://placehold.it/300x200" /></div>
-                    <div class="col-lg-8">
-                        ALIANZA ALQUILA, CASA INDIVIDUAL EN LA CIUDAD DE LA PUNTA, 1 DORMITORIO, COCINA COMEDOR, BAÑO, PATIO, ENTRADA PARA AUTO, TODOS LOS SERVICIOS. PRECIO MENSUAL $3500. CUNSULTAS AL 2664320263.
-                        <a href="/publicacion.html">Ver mas</a>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Titulo del Aviso</h3>
                     </div>
 
-                </div>
-                <div class="panel-footer" style="text-align: right;font-size: small;">Viernes, 10 de Julio, 16:50 HS</div>
-            </div>
+                    <div class="panel-body">
+                        <div class="col-lg-4"><img class="img-responsive" alt="" src="http://placehold.it/300x200" /></div>
+                        <div class="col-lg-8">
+                            @p.Descripcion
+                            @Html.ActionLink("Details", "/../Properties/Details", new { id = p.Id })
+                        </div>
 
-        </div>
+                    </div>
+                    <div class="panel-footer" style="text-align: right;font-size: small;">@p.FechaPublicacion.ToShortDateString()</div>
+                </div>
+
+            </div>
+        }
+        
 
         <div class="col-lg-4" style="padding-top: 20px;">
 
