@@ -1,5 +1,4 @@
-﻿using Proyecto.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,10 +10,6 @@ namespace Proyecto.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Categorias = ListadoCategorias();
-            ViewBag.Localidades = ListadoLocalidades();
-            ViewBag.Tipos = ListadoTipoPropiedades();
-            ViewBag.Propiedades = ListadoPropiedades();
             return View();
         }
 
@@ -30,42 +25,6 @@ namespace Proyecto.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
-        }
-
-        //metodo creado para retornar la lista de categorias que tengo en la bd
-        public List<Category> ListadoCategorias()
-        {
-            using (var db = new AspNetContexto())
-            {
-                return db.Categories.ToList();
-            }
-        }
-
-        //metodo creado para retornar la lista de localidades que tengo en la bd
-        public List<Locality> ListadoLocalidades()
-        {
-            using (var db = new AspNetContexto())
-            {
-                return db.Localities.ToList();
-            }
-        }
-
-        //metodo creado para retornar la lista de tipo de propiedades que tengo en la bd
-        public List<PropertyType> ListadoTipoPropiedades()
-        {
-            using (var db = new AspNetContexto())
-            {
-                return db.PropertyTypes.ToList();
-            }
-        }
-
-        //metodo creado para retornar la lista de propiedades/publicaciones que tengo en la bd
-        public List<Property> ListadoPropiedades()
-        {
-            using (var db = new AspNetContexto())
-            {
-                return db.Properties.ToList();
-            }
         }
     }
 }
