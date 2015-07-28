@@ -1,0 +1,159 @@
+﻿@model IEnumerable<Proyecto.Models.Property>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Locality.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PropertyType.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Latitud)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Longitud)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ambientes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Baños)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cochera)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GasNatural)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amoblado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AireAcond)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Niños)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mascotas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MtsCuadrados)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Precio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TiempoRestante)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaPublicacion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Locality.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PropertyType.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Titulo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Latitud)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Longitud)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ambientes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Baños)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cochera)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GasNatural)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amoblado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AireAcond)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Niños)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mascotas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MtsCuadrados)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Precio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TiempoRestante)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaPublicacion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
