@@ -5,8 +5,10 @@ using System.Web;
 
 namespace Proyecto.Models
 {
-    public class Class2
+    public class Category
     {
-        //fasdfdafasf
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+
     }
 }
