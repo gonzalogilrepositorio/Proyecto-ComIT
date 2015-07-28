@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="container well">
+        <div class="row">
+            <div class="col-lg-8">
+                <img class="img-responsive" alt="" src="http://placehold.it/1000x200" />
+            </div>
+            <!--<div class="col-lg-4">   <img class="img-responsive" alt="" src="http://placehold.it/800x300"/>               </div>-->
+        </div></br>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">Inicio</a></li>
+                        <!--<li><a href="#">Publicaciones</a></li>-->
+                        <li><a href="#">Ventas</a></li>
+                        <li><a href="#">Alquileres</a></li>
+                        <li><a href="#">Locales</a></li>
+
+                        <li><a href="/contacto.html">Contacto</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Registrarse</a></li>
+                        <li><a href="#">Log In</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav><!-- cierre de menu -->
+        
+        @RenderBody()
+
+        <footer>
+            Fecha: @DateTime.Today.Date
+        </footer>
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
