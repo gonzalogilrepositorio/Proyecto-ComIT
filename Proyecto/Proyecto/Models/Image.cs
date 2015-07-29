@@ -10,7 +10,7 @@ namespace Proyecto.Models
         public int Id { get; set; }
         public string ImagenUrl { get; set; }
 
-        public Property Propiedad { get; set; }
-        public int IdProperty { get; set; }
+        public Property Property { get; set; }
+        public int PropertyId { get; set; }
     }
 }
