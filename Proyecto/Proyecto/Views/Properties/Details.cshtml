@@ -7,188 +7,292 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Property</h4>
+    <h4>Propiedad</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Category.Nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Category.Nombre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Locality.Nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Locality.Nombre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PropertyType.Nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PropertyType.Nombre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.User.Nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.User.Nombre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Titulo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Titulo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Direccion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Direccion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Latitud)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Latitud)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Longitud)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Longitud)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Ambientes)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Ambientes)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Baños)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Baños)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Cochera)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Cochera)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GasNatural)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GasNatural)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Amoblado)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Amoblado)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AireAcond)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AireAcond)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Niños)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Niños)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Mascotas)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Mascotas)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MtsCuadrados)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MtsCuadrados)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Precio)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Precio)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Estado)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Estado)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TiempoRestante)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TiempoRestante)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FechaPublicacion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FechaPublicacion)
-        </dd>
-
-    </dl>
+    
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+
+    <!-- galeria ,detalles de la propiedad descripcion mapar de ubicacion contacto al dueño-->
+    <div class="container well">
+        <div class="row">
+            <div class="panel panel-info col-lg-8">
+                <div class="panel-heading"><b>Instalaciones y Servicios</b></div>
+                <div class="panel-body">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#home" data-toggle="tab" aria-expanded="false">Detalles</a></li>
+                        <li><a href="#tarifas" data-toggle="tab" aria-expanded="true">Tarifas</a></li>
+                        <li><a href="#caracteristicas" data-toggle="tab" aria-expanded="true">Caracteristicas</a></li>
+                        <li><a href="#contacto" data-toggle="tab" aria-expanded="true">Info de Contacto</a></li>
+
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                        <div class="tab-pane fade active in" id="home">
+                            <p>
+                                Propiedad Ubicada en la localidad de @Html.DisplayNameFor(model => model.Locality.Nombre).<hr />
+                                nombre -@Html.DisplayFor(model => model.Category.Nombre) - tipo: @Html.DisplayFor(model => model.PropertyType.Nombre) <hr />
+                                titulo: @Html.DisplayFor(model => model.Titulo) - descripcion: @Html.DisplayFor(model => model.Descripcion) <hr />
+                                direccion: @Html.DisplayFor(model => model.Direccion) - ambientes: @Html.DisplayFor(model => model.Ambientes) <hr />
+                                baños: @Html.DisplayFor(model => model.Baños) - cochera: @Html.DisplayFor(model => model.Cochera)  <hr />
+                                gas: @Html.DisplayFor(model => model.GasNatural)
+
+
+                            </p>
+                        </div>
+                        <div class="tab-pane fade" id="tarifas">
+                            <p>Una Tabla con Tarifas </p>
+                        </div>
+                        <div class="tab-pane fade" id="caracteristicas">
+                            <p>
+                                @Html.DisplayNameFor(model => model.User.Nombre)
+
+                                @Html.DisplayFor(model => model.User.Nombre)
+
+                                @Html.DisplayNameFor(model => model.Latitud)
+
+                                @Html.DisplayFor(model => model.Latitud)
+
+                                @Html.DisplayNameFor(model => model.Longitud)
+
+                                @Html.DisplayFor(model => model.Longitud)
+
+                                @Html.DisplayNameFor(model => model.Amoblado)
+
+                                @Html.DisplayFor(model => model.Amoblado)
+
+                                @Html.DisplayNameFor(model => model.AireAcond)
+
+                                @Html.DisplayFor(model => model.AireAcond)
+
+                                @Html.DisplayNameFor(model => model.Niños)
+
+                                @Html.DisplayFor(model => model.Niños)
+
+                                @Html.DisplayNameFor(model => model.Mascotas)
+
+                                @Html.DisplayFor(model => model.Mascotas)
+
+                                @Html.DisplayNameFor(model => model.MtsCuadrados)
+
+                                @Html.DisplayFor(model => model.MtsCuadrados)
+
+                                @Html.DisplayNameFor(model => model.Precio)
+
+                                @Html.DisplayFor(model => model.Precio)
+
+                                @Html.DisplayNameFor(model => model.Estado)
+
+                                @Html.DisplayFor(model => model.Estado)
+
+                                @Html.DisplayNameFor(model => model.TiempoRestante)
+
+                                @Html.DisplayFor(model => model.TiempoRestante)
+
+                                @Html.DisplayNameFor(model => model.FechaPublicacion)
+
+                                @Html.DisplayFor(model => model.FechaPublicacion)
+                            </p>
+                        </div>
+
+                        <div class="tab-pane fade" id="contacto">
+                            <p>Aca va la info del propetario mas form de contacto  </p>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="panel-info col-lg-12">
+                <div class="panel-heading">
+                    <h1 class="panel-title">Fotos</h1>
+                </div>
+
+                <div class="panel-body">
+
+                    <div id="main_area">
+                        <!-- Slider -->
+                        <div class="row">
+                            <div class="col-sm-6 " id="slider-thumbs">
+                                <!-- Bottom switcher of slider -->
+                                <ul class="hide-bullets hidden-xs">
+                                    <li class="col-sm-4">
+                                        <a class="thumbnail" id="carousel-selector-0">
+                                            <img src="http://placehold.it/150x150&text=zero">
+                                        </a>
+                                    </li>
+
+                                    <li class="col-sm-4">
+                                        <a class="thumbnail" id="carousel-selector-1"><img src="http://placehold.it/150x150&text=1"></a>
+                                    </li>
+
+                                    <li class="col-sm-4">
+                                        <a class="thumbnail" id="carousel-selector-2"><img src="http://placehold.it/150x150&text=2"></a>
+                                    </li>
+
+                                    <li class="col-sm-4">
+                                        <a class="thumbnail" id="carousel-selector-3"><img src="http://placehold.it/150x150&text=3"></a>
+                                    </li>
+
+                                    <li class="col-sm-4">
+                                        <a class="thumbnail" id="carousel-selector-4"><img src="http://placehold.it/150x150&text=4"></a>
+                                    </li>
+
+                                    <li class="col-sm-4">
+                                        <a class="thumbnail" id="carousel-selector-5"><img src="http://placehold.it/150x150&text=5"></a>
+                                    </li>
+                                    <li class="col-sm-4">
+                                        <a class="thumbnail" id="carousel-selector-6"><img src="http://placehold.it/150x150&text=6"></a>
+                                    </li>
+
+                                    <li class="col-sm-4">
+                                        <a class="thumbnail" id="carousel-selector-7"><img src="http://placehold.it/150x150&text=7"></a>
+                                    </li>
+
+                                    <li class="col-sm-4">
+                                        <a class="thumbnail" id="carousel-selector-8"><img src="http://placehold.it/150x150&text=8"></a>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="col-xs-12" id="slider">
+                                    <!-- Top part of the slider -->
+                                    <div class="row">
+                                        <div class="col-sm-12" id="carousel-bounding-box">
+                                            <div class="carousel slide" id="myCarousel">
+                                                <!-- Carousel items -->
+                                                <div class="carousel-inner">
+                                                    <div class="active item" data-slide-number="0">
+                                                        <img src="http://placehold.it/470x480&text=zero">
+                                                    </div>
+
+                                                    <div class="item" data-slide-number="1">
+                                                        <img src="http://placehold.it/470x480&text=1">
+                                                    </div>
+
+                                                    <div class="item" data-slide-number="2">
+                                                        <img src="http://placehold.it/470x480&text=2">
+                                                    </div>
+
+                                                    <div class="item" data-slide-number="3">
+                                                        <img src="http://placehold.it/470x480&text=3">
+                                                    </div>
+
+                                                    <div class="item" data-slide-number="4">
+                                                        <img src="http://placehold.it/470x480&text=4">
+                                                    </div>
+
+                                                    <div class="item" data-slide-number="5">
+                                                        <img src="http://placehold.it/470x480&text=5">
+                                                    </div>
+
+                                                    <div class="item" data-slide-number="6">
+                                                        <img src="http://placehold.it/470x480&text=6">
+                                                    </div>
+
+                                                    <div class="item" data-slide-number="7">
+                                                        <img src="http://placehold.it/470x480&text=7">
+                                                    </div>
+
+                                                    <div class="item" data-slide-number="8">
+                                                        <img src="http://placehold.it/470x480&text=8">
+                                                    </div>
+
+
+                                                </div>
+                                                <!-- Carousel nav -->
+                                                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                                                    <span class="glyphicon glyphicon-chevron-left"></span>
+                                                </a>
+                                                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                                                    <span class="glyphicon glyphicon-chevron-right"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/Slider-->
+                        </div>
+
+                    </div>
+                </div><!-- aca cierrra el panel body-->
+
+            </div><!--aca cierra el panel-->
+
+        </div>
+
+        <div class="row">
+            <div class="panel panel-info col-lg-8">
+                <div class="panel-heading">Ubicacion de la Propiedad</div>
+                <div class="panel-body col-lg-6 col-lg-offset-3 col-xs-12">
+                    <div><img class="img-responsive" src="http://placehold.it/470x480&text=Ubicacion"></div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="panel panel-info col-lg-8">
+                <div class="panel-heading">Contactar Propietario</div>
+                <div class="panel-body">
+                    <form class="form-horizontal">
+                        <fieldset>
+                            <legend>Rellene los Campos</legend>
+                            <div class="form-group">
+                                <label for="inputNombre" class="col-lg-2 control-label">Nombre y Apellido</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="inputNombre" placeholder="Nombre">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputTel" class="col-lg-2 control-label">Telefono</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="inputTel" placeholder="Telefono">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="textArea" class="col-lg-2 control-label">Mensaje</label>
+                                <div class="col-lg-10">
+                                    <textarea class="form-control" rows="3" id="textArea"></textarea>
+                                    <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <button type="reset" class="btn btn-default">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+   
+
