@@ -7,186 +7,9 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Property</h4>
+    <h4>Propiedad</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Category.Nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Category.Nombre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Locality.Nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Locality.Nombre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PropertyType.Nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PropertyType.Nombre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.User.Nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.User.Nombre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Titulo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Titulo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Direccion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Direccion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Latitud)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Latitud)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Longitud)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Longitud)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Ambientes)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Ambientes)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Baños)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Baños)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Cochera)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Cochera)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GasNatural)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GasNatural)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Amoblado)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Amoblado)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AireAcond)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AireAcond)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Niños)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Niños)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Mascotas)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Mascotas)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MtsCuadrados)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MtsCuadrados)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Precio)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Precio)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Estado)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Estado)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TiempoRestante)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TiempoRestante)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FechaPublicacion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FechaPublicacion)
-        </dd>
-
-    </dl>
+    
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
@@ -209,13 +32,70 @@
                     </ul>
                     <div id="myTabContent" class="tab-content">
                         <div class="tab-pane fade active in" id="home">
-                            <p>Una Tabla con detalles </p>
+                            <p>
+                                Propiedad Ubicada en la localidad de @Html.DisplayNameFor(model => model.Locality.Nombre).<hr />
+                                nombre -@Html.DisplayFor(model => model.Category.Nombre) - tipo: @Html.DisplayFor(model => model.PropertyType.Nombre) <hr />
+                                titulo: @Html.DisplayFor(model => model.Titulo) - descripcion: @Html.DisplayFor(model => model.Descripcion) <hr />
+                                direccion: @Html.DisplayFor(model => model.Direccion) - ambientes: @Html.DisplayFor(model => model.Ambientes) <hr />
+                                baños: @Html.DisplayFor(model => model.Baños) - cochera: @Html.DisplayFor(model => model.Cochera)  <hr />
+                                gas: @Html.DisplayFor(model => model.GasNatural)
+
+
+                            </p>
                         </div>
                         <div class="tab-pane fade" id="tarifas">
                             <p>Una Tabla con Tarifas </p>
                         </div>
                         <div class="tab-pane fade" id="caracteristicas">
-                            <p>Una Tabla con Caraceristicas </p>
+                            <p>
+                                @Html.DisplayNameFor(model => model.User.Nombre)
+
+                                @Html.DisplayFor(model => model.User.Nombre)
+
+                                @Html.DisplayNameFor(model => model.Latitud)
+
+                                @Html.DisplayFor(model => model.Latitud)
+
+                                @Html.DisplayNameFor(model => model.Longitud)
+
+                                @Html.DisplayFor(model => model.Longitud)
+
+                                @Html.DisplayNameFor(model => model.Amoblado)
+
+                                @Html.DisplayFor(model => model.Amoblado)
+
+                                @Html.DisplayNameFor(model => model.AireAcond)
+
+                                @Html.DisplayFor(model => model.AireAcond)
+
+                                @Html.DisplayNameFor(model => model.Niños)
+
+                                @Html.DisplayFor(model => model.Niños)
+
+                                @Html.DisplayNameFor(model => model.Mascotas)
+
+                                @Html.DisplayFor(model => model.Mascotas)
+
+                                @Html.DisplayNameFor(model => model.MtsCuadrados)
+
+                                @Html.DisplayFor(model => model.MtsCuadrados)
+
+                                @Html.DisplayNameFor(model => model.Precio)
+
+                                @Html.DisplayFor(model => model.Precio)
+
+                                @Html.DisplayNameFor(model => model.Estado)
+
+                                @Html.DisplayFor(model => model.Estado)
+
+                                @Html.DisplayNameFor(model => model.TiempoRestante)
+
+                                @Html.DisplayFor(model => model.TiempoRestante)
+
+                                @Html.DisplayNameFor(model => model.FechaPublicacion)
+
+                                @Html.DisplayFor(model => model.FechaPublicacion)
+                            </p>
                         </div>
 
                         <div class="tab-pane fade" id="contacto">
@@ -240,9 +120,9 @@
                     <div id="main_area">
                         <!-- Slider -->
                         <div class="row">
-                            <div class="col-sm-6" id="slider-thumbs">
+                            <div class="col-sm-6 " id="slider-thumbs">
                                 <!-- Bottom switcher of slider -->
-                                <ul class="hide-bullets">
+                                <ul class="hide-bullets hidden-xs">
                                     <li class="col-sm-4">
                                         <a class="thumbnail" id="carousel-selector-0">
                                             <img src="http://placehold.it/150x150&text=zero">
@@ -414,38 +294,5 @@
 
 
     </div>
+   
 
-
-
-
-
-
-    @*<script src="/js/jquery-2.1.4.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>*@
-    <script>
-                    jQuery(document).ready(function($) {
-
-                $('#myCarousel').carousel({
-                        interval: 5000
-                });
-
-                //Handles the carousel thumbnails
-                $('[id^=carousel-selector-]').click(function () {
-                var id_selector = $(this).attr("id");
-                try {
-                    var id = /-(\d+)$/.exec(id_selector)[1];
-                    console.log(id_selector, id);
-                    jQuery('#myCarousel').carousel(parseInt(id));
-                } catch (e) {
-                    console.log('Regex failed!', e);
-                }
-            });
-                // When the carousel slides, auto update the text
-                $('#myCarousel').on('slid.bs.carousel', function (e) {
-                         var id = $('.item.active').data('slide-number');
-                        $('#carousel-text').html($('#slide-content-'+id).html());
-                });
-});
-
-    </script>
-</div>
