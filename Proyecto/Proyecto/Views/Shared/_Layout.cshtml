@@ -19,7 +19,7 @@
     <header style="background: #395c82;">
         <div class="row">
             <div class="col-lg-8">
-                <img class="img-responsive" alt="" src="http://placehold.it/1000x200" />
+                <img class="img-responsive" alt="" src="http://placehold.it/1000x100" />
             </div>
             <!--<div class="col-lg-4">   <img class="img-responsive" alt="" src="http://placehold.it/800x300"/>               </div>-->
         </div><br/>
@@ -75,35 +75,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    @section scripts{
-        <script>
-             jQuery(document).ready(function($) {
-
-                $('#myCarousel').carousel({
-                        interval: 5000
-                });
-
-                //Handles the carousel thumbnails
-                $('[id^=carousel-selector-]').click(function () {
-                var id_selector = $(this).attr("id");
-                try {
-                    var id = /-(\d+)$/.exec(id_selector)[1];
-                    console.log(id_selector, id);
-                    jQuery('#myCarousel').carousel(parseInt(id));
-                    console.log("llega");
-                } catch (e) {
-                    console.log('Regex failed!', e);
-                }
-            });
-                // When the carousel slides, auto update the text
-                $('#myCarousel').on('slid.bs.carousel', function (e) {
-                         var id = $('.item.active').data('slide-number');
-                         $('#carousel-text').html($('#slide-content-' + id).html());
-                         console.log("llega");
-                });
-         });
-
-        </script>}
+    
  
 </body>
 </html>
