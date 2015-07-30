@@ -3,17 +3,22 @@
 @{
     ViewBag.Title = "Details";
 }
+<div class="pannel-heading" >
+    <h2>
+        <b>Propiedad Ubicada en la localidad de @Html.DisplayFor(model => model.Locality.Nombre).</b>
+    </h2>
 
-<h2>Details</h2>
 
-<div>
-    <h4>Propiedad</h4>
+
+    <h4><b>Tipo de Negocio:</b> @Html.DisplayFor(model => model.Category.Nombre) <br/>
+        <b>Tipo de Propiedad:</b> @Html.DisplayFor(model => model.PropertyType.Nombre)</h4>
     <hr />
     
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |    
+    @Html.ActionLink("Volver", "/../Home/Index")
 </p>
 
 
@@ -32,69 +37,52 @@
                     </ul>
                     <div id="myTabContent" class="tab-content">
                         <div class="tab-pane fade active in" id="home">
-                            <p>
-                                Propiedad Ubicada en la localidad de @Html.DisplayNameFor(model => model.Locality.Nombre).<hr />
-                                nombre -@Html.DisplayFor(model => model.Category.Nombre) - tipo: @Html.DisplayFor(model => model.PropertyType.Nombre) <hr />
-                                titulo: @Html.DisplayFor(model => model.Titulo) - descripcion: @Html.DisplayFor(model => model.Descripcion) <hr />
-                                direccion: @Html.DisplayFor(model => model.Direccion) - ambientes: @Html.DisplayFor(model => model.Ambientes) <hr />
-                                baños: @Html.DisplayFor(model => model.Baños) - cochera: @Html.DisplayFor(model => model.Cochera)  <hr />
-                                gas: @Html.DisplayFor(model => model.GasNatural)
-
-
+                            <p>                               
+                                @Html.DisplayFor(model => model.Titulo)  @Html.DisplayFor(model => model.Descripcion) <hr />
+                                direccion: @Html.DisplayFor(model => model.Direccion)           
                             </p>
                         </div>
                         <div class="tab-pane fade" id="tarifas">
-                            <p>Una Tabla con Tarifas </p>
+                            <p>@Html.DisplayNameFor(model => model.Precio): @Html.DisplayFor(model => model.Precio)$<br /> </p>
                         </div>
                         <div class="tab-pane fade" id="caracteristicas">
                             <p>
-                                @Html.DisplayNameFor(model => model.User.Nombre)
+                                <table>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Amoblado):  @Html.DisplayFor(model => model.Amoblado)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.AireAcond): @Html.DisplayFor(model => model.AireAcond)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Niños): @Html.DisplayFor(model => model.Niños)                                        
+                                    </td>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.Mascotas):  @Html.DisplayFor(model => model.Mascotas)   </td>
+                                    <td>
+                                        @Html.DisplayNameFor(model => model.MtsCuadrados): @Html.DisplayFor(model => model.MtsCuadrados) Mts2                                        
+                                    </td>
 
-                                @Html.DisplayFor(model => model.User.Nombre)
+                                </table>
+                                
 
-                                @Html.DisplayNameFor(model => model.Latitud)
+                                
 
-                                @Html.DisplayFor(model => model.Latitud)
+                                
 
-                                @Html.DisplayNameFor(model => model.Longitud)
+                                
 
-                                @Html.DisplayFor(model => model.Longitud)
+                                
 
-                                @Html.DisplayNameFor(model => model.Amoblado)
+                                @Html.DisplayNameFor(model => model.Precio): @Html.DisplayFor(model => model.Precio)<br />
 
-                                @Html.DisplayFor(model => model.Amoblado)
+                                Disponible: @Html.DisplayFor(model => model.Estado)<br />
 
-                                @Html.DisplayNameFor(model => model.AireAcond)
 
-                                @Html.DisplayFor(model => model.AireAcond)
-
-                                @Html.DisplayNameFor(model => model.Niños)
-
-                                @Html.DisplayFor(model => model.Niños)
-
-                                @Html.DisplayNameFor(model => model.Mascotas)
-
-                                @Html.DisplayFor(model => model.Mascotas)
-
-                                @Html.DisplayNameFor(model => model.MtsCuadrados)
-
-                                @Html.DisplayFor(model => model.MtsCuadrados)
-
-                                @Html.DisplayNameFor(model => model.Precio)
-
-                                @Html.DisplayFor(model => model.Precio)
-
-                                @Html.DisplayNameFor(model => model.Estado)
-
-                                @Html.DisplayFor(model => model.Estado)
-
-                                @Html.DisplayNameFor(model => model.TiempoRestante)
-
-                                @Html.DisplayFor(model => model.TiempoRestante)
-
-                                @Html.DisplayNameFor(model => model.FechaPublicacion)
-
-                                @Html.DisplayFor(model => model.FechaPublicacion)
+                                @Html.DisplayNameFor(model => model.FechaPublicacion): @Html.DisplayFor(model => model.FechaPublicacion)<br />
+                                baños: @Html.DisplayFor(model => model.Baños)<br />
+                                cochera: @Html.DisplayFor(model => model.Cochera)<br />
+                                gas: @Html.DisplayFor(model => model.GasNatural)<br />
                             </p>
                         </div>
 
@@ -110,6 +98,8 @@
         </div>
 
         <div class="row">
+            @section scripts{
+                <script src="~/Scripts/galeria.js"></script>}
             <div class="panel-info col-lg-12">
                 <div class="panel-heading">
                     <h1 class="panel-title">Fotos</h1>
@@ -232,7 +222,7 @@
         </div>
 
         <div class="row">
-            <div class="panel panel-info col-lg-8">
+            <div class="panel panel-info col-lg-12">
                 <div class="panel-heading">Ubicacion de la Propiedad</div>
                 <div class="panel-body col-lg-6 col-lg-offset-3 col-xs-12">
                     <div><img class="img-responsive" src="http://placehold.it/470x480&text=Ubicacion"></div>
@@ -244,7 +234,7 @@
 
 
         <div class="row">
-            <div class="panel panel-info col-lg-8">
+            <div class="panel panel-info col-lg-12">
                 <div class="panel-heading">Contactar Propietario</div>
                 <div class="panel-body">
                     <form class="form-horizontal">
@@ -291,7 +281,7 @@
             </div>
         </div>
 
-
+        
 
     </div>
    
