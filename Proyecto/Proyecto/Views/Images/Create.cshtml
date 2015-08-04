@@ -1,0 +1,132 @@
+﻿@model Proyecto.Models.Image
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<style>
+    .row-centered {
+        text-align:center;
+    }
+    .col-centered {
+        display:inline-block;
+        float:none;
+        /* reset the text-align */
+        text-align:left;
+        /* inline-block space fix */
+        margin-right:-4px;
+    }
+    .col-fixed {
+    /* custom width */
+    width:320px;
+}
+</style>
+
+<h2>Create</h2>
+
+<div>
+    @using (Html.BeginForm("Create", "Images", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div id="formulario" class="container">
+            @Html.AntiForgeryToken()
+
+
+            <div class="row row-centered">
+                <div class="col-lg-12 col-centered col-fixed" style="border:ridge; padding:8px;">
+                    <label>Imagen Principal</label>
+                    <input type="file" name="uploadfile1" id="input0" accept="image/x-png, image/gif, image/jpeg" onchange="$('#img0')[0].src = window.URL.createObjectURL(this.files[0])" />@*el controlador trabaja con el name no con el id*@
+                    <br />
+                    <img id="img0" src="#" alt="your image" style="width: 300px; height: 300px;" />
+                </div>
+            </div><br /><br />
+
+            <div class="row">
+                <div class="col-lg-3">
+                    <label>Cargar otra</label>
+                    <input type="file" name="uploadfile1" id="input0" accept="image/x-png, image/gif, image/jpeg" onchange="$('#img1')[0].src = window.URL.createObjectURL(this.files[0])" />@*el controlador trabaja con el name no con el id*@
+                    <br />
+                    <img id="img1" src="#" alt="your image" style="width: 100px; height: 100px;" />
+                </div>
+                <div class="col-lg-3">
+                    <label>Cargar otra</label>
+                    <input type="file" name="uploadfile1" id="input0" accept="image/x-png, image/gif, image/jpeg" onchange="$('#img2')[0].src = window.URL.createObjectURL(this.files[0])" />@*el controlador trabaja con el name no con el id*@
+                    <br />
+                    <img id="img2" src="#" alt="your image" style="width: 100px; height: 100px;" />
+                </div>
+                <div class="col-lg-3">
+                    <label>Cargar otra</label>
+                    <input type="file" name="uploadfile1" id="input0" accept="image/x-png, image/gif, image/jpeg" onchange="$('#img3')[0].src = window.URL.createObjectURL(this.files[0])" />@*el controlador trabaja con el name no con el id*@
+                    <br />
+                    <img id="img3" src="#" alt="your image" style="width: 100px; height: 100px;" />
+                </div>
+                <div class="col-lg-3">
+                    <label>Cargar otra</label>
+                    <input type="file" name="uploadfile1" id="input0" accept="image/x-png, image/gif, image/jpeg" onchange="$('#img4')[0].src = window.URL.createObjectURL(this.files[0])" />@*el controlador trabaja con el name no con el id*@
+                    <br />
+                    <img id="img4" src="#" alt="your image" style="width: 100px; height: 100px;" />
+                </div>
+            </div><br /><br />
+
+            <div class="row">
+                <div class="col-lg-3">
+                    <label>Cargar otra</label>
+                    <input type="file" name="uploadfile1" id="input0" accept="image/x-png, image/gif, image/jpeg" onchange="$('#img5')[0].src = window.URL.createObjectURL(this.files[0])" />@*el controlador trabaja con el name no con el id*@
+                    <br />
+                    <img id="img5" src="#" alt="your image" style="width: 100px; height: 100px;" />
+                </div>
+                <div class="col-lg-3">
+                    <label>Cargar otra</label>
+                    <input type="file" name="uploadfile1" id="input0" accept="image/x-png, image/gif, image/jpeg" onchange="$('#img6')[0].src = window.URL.createObjectURL(this.files[0])" />@*el controlador trabaja con el name no con el id*@
+                    <br />
+                    <img id="img6" src="#" alt="your image" style="width: 100px; height: 100px;" />
+                </div>
+                <div class="col-lg-3">
+                    <label>Cargar otra</label>
+                    <input type="file" name="uploadfile1" id="input0" accept="image/x-png, image/gif, image/jpeg" onchange="$('#img7')[0].src = window.URL.createObjectURL(this.files[0])" />@*el controlador trabaja con el name no con el id*@
+                    <br />
+                    <img id="img7" src="#" alt="your image" style="width: 100px; height: 100px;" />
+                </div>
+                <div class="col-lg-3">
+                    <label>Cargar otra</label>
+                    <input type="file" name="uploadfile1" id="input0" accept="image/x-png, image/gif, image/jpeg" onchange="$('#img8')[0].src = window.URL.createObjectURL(this.files[0])" />@*el controlador trabaja con el name no con el id*@
+                    <br />
+                    <img id="img8" src="#" alt="your image" style="width: 100px; height: 100px;" />
+                </div>
+            </div>
+            <br /><br /><br /><br /><br />
+            <input type="text" name="idPropiedad" id="idPropiedad" value="1" />
+
+            <input type="button" id="btn" value="Cargar otra" /><br /><br /><br /><br /><br />
+
+            @*Botón para guardar los valores*@
+            <input type="submit" name="Create" id="Create" value="Create" />
+        </div>
+    }
+</div>
+
+
+@if (ViewBag.myimage != null)
+{
+    <img alt="imagen1" src="@Url.Content("~/Images/" + ViewBag.myimage)" />
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function () {
+            $('#btn').click(function () {
+                var boton = document.createElement("input");
+                boton.type = "file";
+                boton.name = "uploadfile1";
+                boton.id = "uploadfile1";
+                $('#formulario').append(boton);
+            });
+        });
+    </script>
+}
+
