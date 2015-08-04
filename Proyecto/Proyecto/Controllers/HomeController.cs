@@ -1,4 +1,5 @@
-﻿using Proyecto.Models;
+﻿using PagedList;
+using Proyecto.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +10,18 @@ namespace Proyecto.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, bool async = false)
         {
             ViewBag.Categorias = ListadoCategorias();
             ViewBag.Localidades = ListadoLocalidades();
             ViewBag.Tipos = ListadoTipoPropiedades();
-            ViewBag.Propiedades = ListadoPropiedades();
-            return View();
+
+            if (async)
+            {
+                return PartialView("_List", ListadoPropiedades(page));
+            }
+            else
+                return View(ListadoPropiedades(page));
         }
 
         public ActionResult About()
@@ -35,9 +41,16 @@ namespace Proyecto.Controllers
         //metodo creado para retornar la lista de categorias que tengo en la bd
         public List<Category> ListadoCategorias()
         {
-            using (var db = new AspNetContexto())
+            try
             {
-                return db.Categories.ToList();
+                using (var db = new AspNetContexto())
+                {
+                    return db.Categories.ToList();
+                }
+            }
+            catch
+            {
+                return null;
             }
         }
 
@@ -60,11 +73,14 @@ namespace Proyecto.Controllers
         }
 
         //metodo creado para retornar la lista de propiedades/publicaciones que tengo en la bd
-        public List<Property> ListadoPropiedades()
+        public IPagedList<Property> ListadoPropiedades(int page)
         {
             using (var db = new AspNetContexto())
             {
-                return db.Properties.ToList();
+                var data = (from p in db.Properties
+                            orderby p.FechaPublicacion descending
+                            select p);
+                return data.ToPagedList(page, 3);
             }
         }
     }
