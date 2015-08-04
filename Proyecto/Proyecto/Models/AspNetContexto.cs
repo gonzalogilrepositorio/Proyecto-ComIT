@@ -13,5 +13,7 @@ namespace Proyecto.Models
         public DbSet<Category> Categories { get; set; }
         public DbSet<PropertyType> PropertyTypes { get; set; }
         public DbSet<Locality> Localities { get; set; }
+
+        public System.Data.Entity.DbSet<Proyecto.Models.Image> Images { get; set; }
     }
 }
