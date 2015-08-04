@@ -1,10 +1,11 @@
-﻿<style>
+﻿@model PagedList.IPagedList<Proyecto.Models.Property>
+@using PagedList.Mvc;
+<style>
     .panRow {
               min-height: 350px;
               max-height: 350px;
               /*overflow-y: scroll;*/
     }
-    
 </style>
 <br />
  <!-- aca empieza la parte del buscador por filtros -->
@@ -52,47 +53,46 @@
         </div>
     </div><!-- aca termina la parte de la busqueda por filtros-->
 
-    <br/>
+<br />
     <!-- aca empieza la parte de los paneles con los avisos  -->
     <div class="row">
-        @foreach (Proyecto.Models.Property p in ViewBag.Propiedades)
-        {
-            <div class="col-lg-4 " style="padding-top: 20px; ">
-
-                <div class="panel panel-info ">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Titulo del Aviso</h3>
+    <div id="result">
+        @Html.Partial("_List", Model)
                     </div>
-
-                    <div class="panel-body panRow">
-                        <div class="col-lg-12" ><img class="img-responsive" alt="" src="http://placehold.it/300x200" /></div>
-                        <div class="col-lg-12">
-                            @p.Descripcion
-                            @Html.ActionLink("Details", "/../Properties/Details", new { id = p.Id })
                         </div>
-
-                    </div>
-                    <div class="panel-footer" style="text-align: right;font-size: small;">@p.FechaPublicacion.ToShortDateString()</div>
-                </div>
-
-            </div>
-        }
-        
-
-
-    </div>
+<!-- aca terminan los avisos  -->
 
 <!-- aca esta el paginador -->
 <div class="row">
-    <div class="col-lg-4 col-lg-offset-4" style="text-align: center">
-        <ul class="pagination pagination-sm">
-            <li class="disabled"><a href="#">«</a></li>
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">»</a></li>
-        </ul>
+    <div class="col-lg-12">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
     </div>
 </div>
+
+@section Scripts{
+    <script>
+        $(function () {
+            $('a').click(function (e) {
+                e.preventDefault();
+                //
+                var data = {
+                    num: $(this).text(),
+                    async: true
+                };
+
+                history.pushState(null, document.title, "/Home/Index?page=" + data.num);
+                console.log(data.num);
+                $.ajax({
+                    url: "/Home/Index?page=" + data.num,
+                    data: data
+                }).done(function (dat) {
+                    $('#result').html(dat);
+                });
+
+                $(this).focus();
+            });
+        });
+    </script>
+}
