@@ -11,8 +11,8 @@ namespace Proyecto.Models
         public string Titulo { get; set; }
         public string Descripcion { get; set; }
         public string Direccion { get; set; }
-        public double Latitud { get; set; }
-        public double Longitud { get; set; }
+        public string Latitud { get; set; }
+        public string Longitud { get; set; }
         public int Ambientes { get; set; }
         public int Baños { get; set; }
         public bool Cochera { get; set; }
