@@ -29,6 +29,8 @@ namespace Proyecto.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Property property = db.Properties.Find(id);
+            
+
             if (property == null)
             {
                 return HttpNotFound();
@@ -46,12 +48,11 @@ namespace Proyecto.Controllers
             return View();
         }
 
-        // POST: Properties/Create
+        // POST: Properties1/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Titulo,Descripcion,Direccion,Latitud,Longitud,Ambientes,Baños,Cochera,GasNatural,Amoblado,AireAcond,Niños,Mascotas,MtsCuadrados,Precio,Estado,TiempoRestante,FechaPublicacion,LocalityId,PropertyTypeId,CategoryId,UserId")] Property property)
+        public ActionResult Create(Property property)
         {
             if (ModelState.IsValid)
             {
@@ -64,7 +65,8 @@ namespace Proyecto.Controllers
             ViewBag.LocalityId = new SelectList(db.Localities, "Id", "Nombre", property.LocalityId);
             ViewBag.PropertyTypeId = new SelectList(db.PropertyTypes, "Id", "Nombre", property.PropertyTypeId);
             ViewBag.UserId = new SelectList(db.Users, "Id", "Nombre", property.UserId);
-            return View(property);
+            //return View("/../Views/Home/index");
+            return RedirectToAction("/../Home/Index");
         }
 
         // GET: Properties/Edit/5

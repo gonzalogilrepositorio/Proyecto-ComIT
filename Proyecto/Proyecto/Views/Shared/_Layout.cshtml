@@ -1,6 +1,8 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+ 
+    
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,18 +14,20 @@
     <link rel="stylesheet" href="~/Content/galeria.css">
 
     
+
+    
     
 
 </head>
 <body>
-    <header style="background: #395c82;">
-        <div class="row">
+    <header>
+        <!--<div class="row">
             <div class="col-lg-8">
                 <img class="img-responsive" alt="" src="http://placehold.it/1000x100" />
             </div>
-            <!--<div class="col-lg-4">   <img class="img-responsive" alt="" src="http://placehold.it/800x300"/>               </div>-->
-        </div><br/>
-        <nav class="navbar navbar-inverse">
+            <div class="col-lg-4">   <img class="img-responsive" alt="" src="http://placehold.it/800x300"/>               </div>
+        </div><br/>-->
+        <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -35,13 +39,13 @@
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Inicio</a></li>
+                        <li><a href="/../Home/Index"><b>Home</b></a></li>
                         <!--<li><a href="#">Publicaciones</a></li>-->
-                        <li><a href="#">Ventas</a></li>
-                        <li><a href="#">Alquileres</a></li>
-                        <li><a href="#">Locales</a></li>
+                        <li><a href="#"><b>Servicios</b></a></li>
+                        <li><a href="#"><b>Inversiones</b></a></li>
+                        <li><a href="#"><b>Sobre Nosotros</b></a></li>
 
-                        <li><a href="/contacto.html">Contacto</a></li>
+                        <li><a href="/contacto.html"><b>Contacto</b></a></li>
                     </ul>
                     @Html.Partial("_LoginPartial")
                 </div>
@@ -56,7 +60,7 @@
             </fieldset>
            
             </div>
-    <footer style="background-color:#395c82;">
+    <footer><!--style="background-color:#395c82;"-->
         <div class="row">
             <div class="col-lg-12">
                 <div class="col-lg-4 col-lg-offset-4" style="text-align:center;">
