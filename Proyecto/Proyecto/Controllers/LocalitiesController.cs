@@ -12,7 +12,7 @@ namespace Proyecto.Controllers
 {
     public class LocalitiesController : Controller
     {
-        private AspNetContexto db = new AspNetContexto();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Localities
         public ActionResult Index()

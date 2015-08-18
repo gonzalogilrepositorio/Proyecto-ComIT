@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Proyecto.Models
-{
+{ 
+
+
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
@@ -79,6 +82,18 @@ namespace Proyecto.Models
         [Display(Name = "Confirmar contraseña")]
         [Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmación no coinciden.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Nombre")]
+        public string Name { get; set; }
+        [Required]
+        [Display(Name = "Apellido")]
+        public string Surname { get; set; }
+        public string Adreess { get; set; }
+        [DataType(DataType.PhoneNumber)]
+        public string Phone { get; set; }
+        public string Phone2 { get; set; }
+        
     }
 
     public class ResetPasswordViewModel

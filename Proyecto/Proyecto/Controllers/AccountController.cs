@@ -151,10 +151,21 @@ namespace Proyecto.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                
+                var user = new User {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    Name = model.Name,
+                    Surname = model.Surname,
+                    Phone = model.Phone,
+                    Adreess = model.Adreess,
+                    Phone2 = model.Phone2
+                };
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // Para obtener más información sobre cómo habilitar la confirmación de cuenta y el restablecimiento de contraseña, visite http://go.microsoft.com/fwlink/?LinkID=320771
@@ -367,7 +378,7 @@ namespace Proyecto.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new User { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -387,7 +398,7 @@ namespace Proyecto.Controllers
 
         //
         // POST: /Account/LogOff
-        [HttpPost]
+        [HttpPost,HttpGet]
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {

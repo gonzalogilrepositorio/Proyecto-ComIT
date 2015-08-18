@@ -12,6 +12,10 @@ namespace Proyecto.Controllers
     {
         public ActionResult Index(int page = 1, bool async = false)
         {
+            var db = new ApplicationDbContext();
+
+            var user = db.Users.FirstOrDefault();
+
             ViewBag.Categorias = ListadoCategorias();
             ViewBag.Localidades = ListadoLocalidades();
             ViewBag.Tipos = ListadoTipoPropiedades();
@@ -43,7 +47,7 @@ namespace Proyecto.Controllers
         {
             try
             {
-                using (var db = new AspNetContexto())
+                using (var db = new ApplicationDbContext())
                 {
                     return db.Categories.ToList();
                 }
@@ -57,7 +61,7 @@ namespace Proyecto.Controllers
         //metodo creado para retornar la lista de localidades que tengo en la bd
         public List<Locality> ListadoLocalidades()
         {
-            using (var db = new AspNetContexto())
+            using (var db = new ApplicationDbContext())
             {
                 return db.Localities.ToList();
             }
@@ -66,7 +70,7 @@ namespace Proyecto.Controllers
         //metodo creado para retornar la lista de tipo de propiedades que tengo en la bd
         public List<PropertyType> ListadoTipoPropiedades()
         {
-            using (var db = new AspNetContexto())
+            using (var db = new ApplicationDbContext())
             {
                 return db.PropertyTypes.ToList();
             }
@@ -75,7 +79,7 @@ namespace Proyecto.Controllers
         //metodo creado para retornar la lista de propiedades/publicaciones que tengo en la bd
         public IPagedList<Property> ListadoPropiedades(int page)
         {
-            using (var db = new AspNetContexto())
+            using (var db = new ApplicationDbContext())
             {
                 var data = (from p in db.Properties
                             orderby p.FechaPublicacion descending

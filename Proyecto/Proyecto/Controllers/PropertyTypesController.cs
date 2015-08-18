@@ -12,7 +12,7 @@ namespace Proyecto.Controllers
 {
     public class PropertyTypesController : Controller
     {
-        private AspNetContexto db = new AspNetContexto();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: PropertyTypes
         public ActionResult Index()

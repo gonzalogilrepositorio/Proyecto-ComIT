@@ -8,6 +8,8 @@
     }
 </style>
 <br />
+
+
  <!-- aca empieza la parte del buscador por filtros -->
     <div style="background-color: rgba(204, 44, 21, 0.70); padding-bottom: 20px; padding-top: 10px;" class="container-fluid">
         <div class="col-lg-3">
@@ -63,7 +65,7 @@
 <!-- aca terminan los avisos  -->
 
 <!-- aca esta el paginador -->
-<div class="row">
+<div class="row" id="paginacion">
     <div class="col-lg-12">
         Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
@@ -74,7 +76,7 @@
 @section Scripts{
     <script>
         $(function () {
-            $('a').click(function (e) {
+            $('#paginacion a').click(function (e) {
                 e.preventDefault();
                 //
                 var data = {

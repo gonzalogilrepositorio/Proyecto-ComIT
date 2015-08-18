@@ -13,7 +13,7 @@ namespace Proyecto.Controllers
 {
     public class ImagesController : Controller
     {
-        private AspNetContexto db = new AspNetContexto();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Images
         public ActionResult Index(int idPropiedad)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -33,7 +34,9 @@ namespace Proyecto.Models
         public int PropertyTypeId { get; set; } //indica si es un local, dpto, casa...
         public virtual Category Category { get; set; }
         public int CategoryId { get; set; } //indica si es venta, alquiler temporario o alquiler mensual
+
+        
         public virtual User User { get; set; }
-        public int UserId { get; set; } //indica el usuario que publico la propiedad
+        
     }
 }

@@ -27,7 +27,7 @@
 <div>
     @using (Html.BeginForm("Create", "Images", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
-        <div id="formulario" class="container">
+        <div id="formulario" class="">
             @Html.AntiForgeryToken()
 
 
@@ -35,62 +35,71 @@
                 <div class="col-lg-12 col-centered col-fixed" style="border:ridge; padding:8px;">
                     <label>Imagen Principal</label>
                     <input type="file" name="uploadfile1" id="input0" accept="image/x-png, image/gif, image/jpeg" onchange="$('#img0')[0].src = window.URL.createObjectURL(this.files[0])" />@*el controlador trabaja con el name no con el id*@
+                    <input type="button" value="eliminar" onclick="$('#img0')[0].src = null; var control = $('#input0'); control.replaceWith(control = control.val('').clone(true));"/>
                     <br />
-                    <img id="img0" src="#" alt="your image" style="width: 300px; height: 300px;" />
+                    <img id="img0" src="#" alt="your image" style="width: 600px; height: 300px;" class="img-responsive"/>
                 </div>
             </div><br /><br />
 
             <div class="row">
                 <div class="col-lg-3">
                     <label>Cargar otra</label>
-                    <input type="file" name="uploadfile1" id="input0" accept="image/x-png, image/gif, image/jpeg" onchange="$('#img1')[0].src = window.URL.createObjectURL(this.files[0])" />@*el controlador trabaja con el name no con el id*@
+                    <input type="file" name="uploadfile1" id="input1" accept="image/x-png, image/gif, image/jpeg" onchange="$('#img1')[0].src = window.URL.createObjectURL(this.files[0])" />@*el controlador trabaja con el name no con el id*@
+                    <input type="button" value="eliminar" onclick="$('#img1')[0].src = null; var control = $('#input1'); control.replaceWith(control = control.val('').clone(true));" />
                     <br />
-                    <img id="img1" src="#" alt="your image" style="width: 100px; height: 100px;" />
+                    <img id="img1" src="#" alt="your image" style="width: 300px; height: 200px;" class="img-responsive"/>
                 </div>
                 <div class="col-lg-3">
                     <label>Cargar otra</label>
-                    <input type="file" name="uploadfile1" id="input0" accept="image/x-png, image/gif, image/jpeg" onchange="$('#img2')[0].src = window.URL.createObjectURL(this.files[0])" />@*el controlador trabaja con el name no con el id*@
+                    <input type="file" name="uploadfile1" id="input2" accept="image/x-png, image/gif, image/jpeg" onchange="$('#img2')[0].src = window.URL.createObjectURL(this.files[0])" />@*el controlador trabaja con el name no con el id*@
+                    <input type="button" value="eliminar" onclick="$('#img2')[0].src = null; var control = $('#input2'); control.replaceWith(control = control.val('').clone(true));" />
                     <br />
-                    <img id="img2" src="#" alt="your image" style="width: 100px; height: 100px;" />
+                    <img id="img2" src="#" alt="your image" style="width: 300px; height: 200px;" class="img-responsive"/>
                 </div>
                 <div class="col-lg-3">
                     <label>Cargar otra</label>
-                    <input type="file" name="uploadfile1" id="input0" accept="image/x-png, image/gif, image/jpeg" onchange="$('#img3')[0].src = window.URL.createObjectURL(this.files[0])" />@*el controlador trabaja con el name no con el id*@
+                    <input type="file" name="uploadfile1" id="input3" accept="image/x-png, image/gif, image/jpeg" onchange="$('#img3')[0].src = window.URL.createObjectURL(this.files[0])" />@*el controlador trabaja con el name no con el id*@
+                    <input type="button" value="eliminar" onclick="$('#img3')[0].src = null; var control = $('#input3'); control.replaceWith(control = control.val('').clone(true));" />
                     <br />
-                    <img id="img3" src="#" alt="your image" style="width: 100px; height: 100px;" />
+                    <img id="img3" src="#" alt="your image" style="width: 300px; height: 200px;" class="img-responsive"/>
                 </div>
                 <div class="col-lg-3">
                     <label>Cargar otra</label>
-                    <input type="file" name="uploadfile1" id="input0" accept="image/x-png, image/gif, image/jpeg" onchange="$('#img4')[0].src = window.URL.createObjectURL(this.files[0])" />@*el controlador trabaja con el name no con el id*@
+                    <input type="file" name="uploadfile1" id="input4" accept="image/x-png, image/gif, image/jpeg" onchange="$('#img4')[0].src = window.URL.createObjectURL(this.files[0])" />@*el controlador trabaja con el name no con el id*@
+                    <input type="button" value="eliminar" onclick="$('#img4')[0].src = null; var control = $('#input4'); control.replaceWith(control = control.val('').clone(true));" />
                     <br />
-                    <img id="img4" src="#" alt="your image" style="width: 100px; height: 100px;" />
+                    <img id="img4" src="#" alt="your image" style="width: 300px; height: 200px;" class="img-responsive"/>
                 </div>
             </div><br /><br />
 
             <div class="row">
                 <div class="col-lg-3">
                     <label>Cargar otra</label>
-                    <input type="file" name="uploadfile1" id="input0" accept="image/x-png, image/gif, image/jpeg" onchange="$('#img5')[0].src = window.URL.createObjectURL(this.files[0])" />@*el controlador trabaja con el name no con el id*@
+                    <input type="file" name="uploadfile1" id="input5" accept="image/x-png, image/gif, image/jpeg" onchange="$('#img5')[0].src = window.URL.createObjectURL(this.files[0])" />@*el controlador trabaja con el name no con el id*@
+                    <input type="button" value="eliminar" onclick="$('#img5')[0].src = null; var control = $('#input5'); control.replaceWith(control = control.val('').clone(true));" />
                     <br />
-                    <img id="img5" src="#" alt="your image" style="width: 100px; height: 100px;" />
+                    <img id="img5" src="#" alt="your image" style="width: 300px; height: 200px;" class="img-responsive"/>
                 </div>
                 <div class="col-lg-3">
                     <label>Cargar otra</label>
-                    <input type="file" name="uploadfile1" id="input0" accept="image/x-png, image/gif, image/jpeg" onchange="$('#img6')[0].src = window.URL.createObjectURL(this.files[0])" />@*el controlador trabaja con el name no con el id*@
+                    <input type="file" name="uploadfile1" id="input6" accept="image/x-png, image/gif, image/jpeg" onchange="$('#img6')[0].src = window.URL.createObjectURL(this.files[0])" />@*el controlador trabaja con el name no con el id*@
+                    <input type="button" value="eliminar" onclick="$('#img6')[0].src = null; var control = $('#input6'); control.replaceWith(control = control.val('').clone(true));" />
                     <br />
-                    <img id="img6" src="#" alt="your image" style="width: 100px; height: 100px;" />
+                    <img id="img6" src="#" alt="your image" style="width: 300px; height: 200px;" class="img-responsive"/>
                 </div>
                 <div class="col-lg-3">
                     <label>Cargar otra</label>
-                    <input type="file" name="uploadfile1" id="input0" accept="image/x-png, image/gif, image/jpeg" onchange="$('#img7')[0].src = window.URL.createObjectURL(this.files[0])" />@*el controlador trabaja con el name no con el id*@
+                    <input type="file" name="uploadfile1" id="input7" accept="image/x-png, image/gif, image/jpeg" onchange="$('#img7')[0].src = window.URL.createObjectURL(this.files[0])" />@*el controlador trabaja con el name no con el id*@
+                    <input type="button" value="eliminar" onclick="$('#img7')[0].src = null; var control = $('#input7'); control.replaceWith(control = control.val('').clone(true));" />
                     <br />
-                    <img id="img7" src="#" alt="your image" style="width: 100px; height: 100px;" />
+                    <img id="img7" src="#" alt="your image" style="width: 300px; height: 200px;" class="img-responsive"/>
                 </div>
                 <div class="col-lg-3">
                     <label>Cargar otra</label>
-                    <input type="file" name="uploadfile1" id="input0" accept="image/x-png, image/gif, image/jpeg" onchange="$('#img8')[0].src = window.URL.createObjectURL(this.files[0])" />@*el controlador trabaja con el name no con el id*@
+                    <input type="file" name="uploadfile1" id="input8" accept="image/x-png, image/gif, image/jpeg" onchange="$('#img8')[0].src = window.URL.createObjectURL(this.files[0])" />@*el controlador trabaja con el name no con el id*@
+                    <input type="button" value="eliminar" onclick="$('#img8')[0].src = null; var control = $('#input8'); control.replaceWith(control = control.val('').clone(true));" />
                     <br />
-                    <img id="img8" src="#" alt="your image" style="width: 100px; height: 100px;" />
+                    <img id="img8" src="#" alt="your image" style="width: 300px; height: 200px;" class="img-responsive"/>
                 </div>
             </div>
             <br /><br /><br /><br /><br />
