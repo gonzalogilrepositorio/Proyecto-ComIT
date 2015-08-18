@@ -1,19 +1,32 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Proyecto.Models
 {
-    public class User
+    public class User: IdentityUser
     {
-        public int Id { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public string Direccion { get; set; }
-        public string Telefono { get; set; }
-        public string Telefono2 { get; set; }
-        public string Email { get; set; }
+        public User()
+        {
+            Properties = new List<Property>();
+        }
 
+        public virtual string Name { get; set; }
+        public virtual string Surname { get; set; }
+        public virtual string Adreess { get; set; }
+        public virtual string Phone { get; set; }
+        public virtual string Phone2 { get; set; }
+
+        public List<Property> Properties { get; set; }
+
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
+        {
+            // Tenga en cuenta que el valor de authenticationType debe coincidir con el definido en CookieAuthenticationOptions.AuthenticationType
+            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
+            // Agregar reclamaciones de usuario personalizado aquí
+            return userIdentity;
+        }
     }
 }

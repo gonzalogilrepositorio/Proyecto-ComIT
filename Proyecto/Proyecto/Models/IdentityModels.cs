@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -16,10 +17,22 @@ namespace Proyecto.Models
             // Agregar reclamaciones de usuario personalizado aquí
             return userIdentity;
         }
+
+        internal Task<ClaimsIdentity> GenerateUserIdentityAsync(ApplicationUserManager manager)
+        {
+            throw new NotImplementedException();
+        }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<User>
     {
+
+        public DbSet<Property> Properties { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<PropertyType> PropertyTypes { get; set; }
+        public DbSet<Locality> Localities { get; set; }
+        public DbSet<Image> Images { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

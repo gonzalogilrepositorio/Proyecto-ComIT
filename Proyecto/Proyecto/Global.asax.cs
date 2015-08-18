@@ -20,7 +20,7 @@ namespace Proyecto
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             //esta linea formatea la bd cada vez que se ejecuta?
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<AspNetContexto>());
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
         }
     }
 }

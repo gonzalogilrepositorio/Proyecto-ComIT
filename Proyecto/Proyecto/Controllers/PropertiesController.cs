@@ -12,7 +12,7 @@ namespace Proyecto.Controllers
 {
     public class PropertiesController : Controller
     {
-        private AspNetContexto db = new AspNetContexto();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Properties
         public ActionResult Index()
@@ -39,32 +39,44 @@ namespace Proyecto.Controllers
         }
 
         // GET: Properties/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Nombre");
             ViewBag.LocalityId = new SelectList(db.Localities, "Id", "Nombre");
             ViewBag.PropertyTypeId = new SelectList(db.PropertyTypes, "Id", "Nombre");
-            ViewBag.UserId = new SelectList(db.Users, "Id", "Nombre");
+            //ViewBag.UserId = new SelectList(db.Users, "Id", "Nombre");
             return View();
         }
 
+        
         // POST: Properties1/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         public ActionResult Create(Property property)
         {
             if (ModelState.IsValid)
             {
-                db.Properties.Add(property);
+                var user = db.Users.FirstOrDefault(x => x.Email.ToLower() == User.Identity.Name.ToLower());
+
+                if (user != null){
+                    user.Properties.Add(property);
+
+                    //property.User = user;
+                    //db.Properties.Add(property);
+                }
+                
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Nombre", property.CategoryId);
             ViewBag.LocalityId = new SelectList(db.Localities, "Id", "Nombre", property.LocalityId);
             ViewBag.PropertyTypeId = new SelectList(db.PropertyTypes, "Id", "Nombre", property.PropertyTypeId);
-            ViewBag.UserId = new SelectList(db.Users, "Id", "Nombre", property.UserId);
+            //ViewBag.UserId = new SelectList(db.Users, "Id", "Nombre", property.UserId);
             //return View("/../Views/Home/index");
             return RedirectToAction("/../Home/Index");
         }
@@ -84,7 +96,7 @@ namespace Proyecto.Controllers
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Nombre", property.CategoryId);
             ViewBag.LocalityId = new SelectList(db.Localities, "Id", "Nombre", property.LocalityId);
             ViewBag.PropertyTypeId = new SelectList(db.PropertyTypes, "Id", "Nombre", property.PropertyTypeId);
-            ViewBag.UserId = new SelectList(db.Users, "Id", "Nombre", property.UserId);
+            //ViewBag.UserId = new SelectList(db.Users, "Id", "Nombre", property.UserId);
             return View(property);
         }
 
@@ -104,7 +116,7 @@ namespace Proyecto.Controllers
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Nombre", property.CategoryId);
             ViewBag.LocalityId = new SelectList(db.Localities, "Id", "Nombre", property.LocalityId);
             ViewBag.PropertyTypeId = new SelectList(db.PropertyTypes, "Id", "Nombre", property.PropertyTypeId);
-            ViewBag.UserId = new SelectList(db.Users, "Id", "Nombre", property.UserId);
+            //ViewBag.UserId = new SelectList(db.Users, "Id", "Nombre", property.UserId);
             return View(property);
         }
 
