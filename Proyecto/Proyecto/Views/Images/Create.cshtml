@@ -1,4 +1,4 @@
-﻿@model Proyecto.Models.Image
+﻿@model Proyecto.Models.Property
 
 @{
     ViewBag.Title = "Create";
@@ -22,7 +22,7 @@
 }
 </style>
 
-<h2>Create</h2>
+<h2>Cargar Imagenes para la propiedad: @Model.Titulo</h2>
 
 <div>
     @using (Html.BeginForm("Create", "Images", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -103,7 +103,7 @@
                 </div>
             </div>
             <br /><br /><br /><br /><br />
-            <input type="text" name="idPropiedad" id="idPropiedad" value="1" />
+            <input type="text" name="idProp" id="idProp" value="@ViewBag.PropertyId" />
 
             <input type="button" id="btn" value="Cargar otra" /><br /><br /><br /><br /><br />
 

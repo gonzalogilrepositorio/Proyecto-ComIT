@@ -22,19 +22,25 @@ namespace Proyecto.Controllers
         }
 
         // GET: Properties/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
             Property property = db.Properties.Find(id);
-            
 
             if (property == null)
             {
                 return HttpNotFound();
             }
+
+            var images = (from p in db.Images
+                        where p.PropertyId == id
+                        orderby p.Id ascending
+                        select p).ToList();
+
+            ViewBag.imageList = images;
             return View(property);
         }
 
@@ -61,7 +67,8 @@ namespace Proyecto.Controllers
             {
                 var user = db.Users.FirstOrDefault(x => x.Email.ToLower() == User.Identity.Name.ToLower());
 
-                if (user != null){
+                if (user != null)
+                {
                     user.Properties.Add(property);
 
                     //property.User = user;
@@ -70,7 +77,8 @@ namespace Proyecto.Controllers
                 
                 db.SaveChanges();
 
-                return RedirectToAction("Index");
+                
+                return RedirectToAction("/../Images/Create", new { idProp = property.Id });
             }
 
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Nombre", property.CategoryId);
