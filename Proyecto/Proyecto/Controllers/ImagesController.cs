@@ -16,6 +16,7 @@ namespace Proyecto.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Images
+        [Authorize]
         public ActionResult Index(int idPropiedad)
         {
             var images = db.Images.Include(i => i.Property).Where(i => i.PropertyId==idPropiedad);
@@ -38,10 +39,17 @@ namespace Proyecto.Controllers
         }
 
         // GET: Images/Create
-        public ActionResult Create()
+        public ActionResult Create(int idProp)
         {
-            ViewBag.PropertyId = new SelectList(db.Properties, "Id", "Titulo");
-            return View();
+            var username = User.Identity.Name;
+            var prop = db.Properties.FirstOrDefault(x => x.Id == idProp && x.User.UserName.ToLower() == username.ToLower());
+
+            if (prop == null) {
+                return Redirect("/?error=NotProperty");
+            }
+
+            ViewBag.PropertyId = idProp; //new SelectList(db.Properties, "Id", "Titulo");
+            return View(prop);
         }
 
         // POST: Images/Create
@@ -49,7 +57,7 @@ namespace Proyecto.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(HttpPostedFileBase[] uploadfile1, int idPropiedad)
+        public ActionResult Create(HttpPostedFileBase[] uploadfile1, int idProp)
         {
             string myGuid;
             var imagen = new Image();
@@ -65,7 +73,7 @@ namespace Proyecto.Controllers
                     file.SaveAs(rutaCompleta);
 
                     imagen.ImagenUrl = myGuid + extension;//se guarda SOLO el nombre de la imagen, ya se sabe que todas las img estan en la carpeta 'Images'
-                    imagen.PropertyId = idPropiedad;
+                    imagen.PropertyId = idProp;
                     
                     db.Images.Add(imagen);
                     db.SaveChanges();
@@ -73,7 +81,7 @@ namespace Proyecto.Controllers
 
                 
             }
-            return View();
+            return View("Index","Home");//falta probarlo si redirecciona bien
         }
 
         // GET: Images/Edit/5

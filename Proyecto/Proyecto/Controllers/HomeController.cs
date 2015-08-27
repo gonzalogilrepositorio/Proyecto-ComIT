@@ -81,10 +81,12 @@ namespace Proyecto.Controllers
         {
             using (var db = new ApplicationDbContext())
             {
-                var data = (from p in db.Properties
-                            orderby p.FechaPublicacion descending
-                            select p);
-                return data.ToPagedList(page, 3);
+                //var data = (from p in db.Properties
+                //            where p.IsValid == true
+                //            orderby p.FechaPublicacion descending
+                //            select p).ToList();
+
+                return db.Properties.Where(x => x.Images.Count() > 0).OrderByDescending(x => x.FechaPublicacion).ToPagedList(page, 3);
             }
         }
     }

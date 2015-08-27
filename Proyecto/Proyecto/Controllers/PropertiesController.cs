@@ -22,19 +22,21 @@ namespace Proyecto.Controllers
         }
 
         // GET: Properties/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Property property = db.Properties.Find(id);
             
-
             if (property == null)
             {
                 return HttpNotFound();
             }
+
+            var images = (from p in db.Images
+                        where p.PropertyId == id
+                        orderby p.Id ascending
+                        select p).ToList();
+
+            ViewBag.imageList = images;
             return View(property);
         }
 
@@ -61,7 +63,8 @@ namespace Proyecto.Controllers
             {
                 var user = db.Users.FirstOrDefault(x => x.Email.ToLower() == User.Identity.Name.ToLower());
 
-                if (user != null){
+                if (user != null)
+                {
                     user.Properties.Add(property);
 
                     //property.User = user;
@@ -70,7 +73,8 @@ namespace Proyecto.Controllers
                 
                 db.SaveChanges();
 
-                return RedirectToAction("Index", "Home");
+                
+                return RedirectToAction("/../Images/Create", new { idProp = property.Id });
             }
 
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Nombre", property.CategoryId);
@@ -82,22 +86,31 @@ namespace Proyecto.Controllers
         }
 
         // GET: Properties/Edit/5
-        public ActionResult Edit(int? id)
+        [Authorize]
+        public ActionResult Edit(int id)
         {
-            if (id == null)
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+
+            var username = User.Identity.Name;//obtengo usuario actual
+            var prop = db.Properties.FirstOrDefault(x => x.Id == id && x.User.UserName.ToLower() == username.ToLower());//busco si usuario que intenta modificar la propiedad sea el mismo que la creo
+
+            if (prop == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return Redirect("/?error=NotProperty");
             }
-            Property property = db.Properties.Find(id);
-            if (property == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Nombre", property.CategoryId);
-            ViewBag.LocalityId = new SelectList(db.Localities, "Id", "Nombre", property.LocalityId);
-            ViewBag.PropertyTypeId = new SelectList(db.PropertyTypes, "Id", "Nombre", property.PropertyTypeId);
-            //ViewBag.UserId = new SelectList(db.Users, "Id", "Nombre", property.UserId);
-            return View(property);
+
+            //Property property = db.Properties.Find(id);
+            //if (property == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Nombre", prop.CategoryId);
+            ViewBag.LocalityId = new SelectList(db.Localities, "Id", "Nombre", prop.LocalityId);
+            ViewBag.PropertyTypeId = new SelectList(db.PropertyTypes, "Id", "Nombre", prop.PropertyTypeId);
+            return View(prop);
         }
 
         // POST: Properties/Edit/5
@@ -105,8 +118,10 @@ namespace Proyecto.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "Id,Titulo,Descripcion,Direccion,Latitud,Longitud,Ambientes,Baños,Cochera,GasNatural,Amoblado,AireAcond,Niños,Mascotas,MtsCuadrados,Precio,Estado,TiempoRestante,FechaPublicacion,LocalityId,PropertyTypeId,CategoryId,UserId")] Property property)
         {
+            
             if (ModelState.IsValid)
             {
                 db.Entry(property).State = EntityState.Modified;

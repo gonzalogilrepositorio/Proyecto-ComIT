@@ -8,6 +8,10 @@ namespace Proyecto.Models
 {
     public class Property
     {
+        public Property()
+        {
+            Images = new List<Image>();
+        }
         public int Id { get; set; }
         public string Titulo { get; set; }
         public string Descripcion { get; set; }
@@ -35,8 +39,10 @@ namespace Proyecto.Models
         public virtual Category Category { get; set; }
         public int CategoryId { get; set; } //indica si es venta, alquiler temporario o alquiler mensual
 
-        
+
         public virtual User User { get; set; }
-        
+
+        public virtual List<Image> Images { get; set; }     
+
     }
 }
