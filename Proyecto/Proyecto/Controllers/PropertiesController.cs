@@ -17,7 +17,11 @@ namespace Proyecto.Controllers
         // GET: Properties
         public ActionResult Index()
         {
-            var properties = db.Properties.Include(p => p.Category).Include(p => p.Locality).Include(p => p.PropertyType).Include(p => p.User);
+            //FILTRO POR MAIL
+            var user = db.Users.FirstOrDefault(x => x.Email.ToLower() == User.Identity.Name.ToLower());
+            var properties = db.Properties.Include(p => p.Category).Include(p => p.Locality).Include(p => p.PropertyType).Include(p =>p.User);
+            properties = properties.Where(P => P.User.Email.ToLower().Contains(user.Email.ToLower()));
+            
             return View(properties.ToList());
         }
 
