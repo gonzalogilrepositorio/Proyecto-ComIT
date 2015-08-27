@@ -398,11 +398,12 @@ namespace Proyecto.Controllers
 
         //
         // POST: /Account/LogOff
-        [HttpPost,HttpGet]
-        [ValidateAntiForgeryToken]
+        //[HttpPost,HttpGet]
+        //[ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
+            Request.Cookies.Clear();
             return RedirectToAction("Index", "Home");
         }
 
