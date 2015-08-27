@@ -70,7 +70,7 @@ namespace Proyecto.Controllers
                 
                 db.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
 
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Nombre", property.CategoryId);
