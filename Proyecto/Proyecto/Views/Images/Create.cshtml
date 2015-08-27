@@ -18,8 +18,34 @@
     }
     .col-fixed {
     /* custom width */
-    width:320px;
-}
+        width:320px;
+    }
+
+    /*esstilo para el boton input*/
+    .btn-file {
+        position: relative;
+        overflow: hidden;
+    }
+    .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        outline: none;
+        background: white;
+        cursor: inherit;
+        display: block;
+    }
+
+    .img-responsive {
+        width: 300px; 
+        height: 200px;
+    }
 </style>
 
 <h2>Cargar Imagenes para la propiedad: @Model.Titulo</h2>
@@ -107,6 +133,28 @@
 
             <input type="button" id="btn" value="Cargar otra" /><br /><br /><br /><br /><br />
 
+
+
+            <div class="input-group image-preview">
+                
+                <span class="input-group-btn">
+                    <!-- image-preview-clear button -->
+                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                        <span class="glyphicon glyphicon-remove"></span> Clear
+                    </button>
+                    <!-- image-preview-input -->
+                    <div class="btn btn-default image-preview-input">
+                        <span class="glyphicon glyphicon-folder-open"></span>
+                        <span class="image-preview-input-title">Browse</span>
+                        <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" /> <!-- rename it -->
+                    </div>
+                </span>
+                <input type="text" class="form-control image-preview-filename" disabled="disabled">
+            </div><!-- /input-group image-preview [TO HERE]--> 
+            
+
+            <br /><br /><br /><br /><br />
+
             @*Botón para guardar los valores*@
             <input type="submit" name="Create" id="Create" value="Create" />
         </div>
@@ -127,14 +175,21 @@
     @Scripts.Render("~/bundles/jqueryval")
 
     <script>
-        $(document).ready(function () {
-            $('#btn').click(function () {
-                var boton = document.createElement("input");
-                boton.type = "file";
-                boton.name = "uploadfile1";
-                boton.id = "uploadfile1";
-                $('#formulario').append(boton);
-            });
+        //$(document).ready(function () {
+        //    $('#btn').click(function () {
+        //        var boton = document.createElement("input");
+        //        boton.type = "file";
+        //        boton.name = "uploadfile1";
+        //        boton.id = "uploadfile1";
+        //        $('#formulario').append(boton);
+        //    });
+        //});
+
+        $(document).on('change', '.btn-file :file', function () {
+            var input = $(this),
+                numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+            input.trigger('fileselect', [numFiles, label]);
         });
     </script>
 }
