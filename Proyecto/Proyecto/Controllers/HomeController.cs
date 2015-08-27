@@ -25,7 +25,10 @@ namespace Proyecto.Controllers
                 return PartialView("_List", ListadoPropiedades(page));
             }
             else
-                return View(ListadoPropiedades(page));
+            {
+                var data = ListadoPropiedades(page);
+                return View(data);
+            }
         }
 
         public ActionResult About()
@@ -86,7 +89,7 @@ namespace Proyecto.Controllers
                 //            orderby p.FechaPublicacion descending
                 //            select p).ToList();
 
-                return db.Properties.Where(x => x.Images.Count() > 0).OrderByDescending(x => x.FechaPublicacion).ToPagedList(page, 3);
+                return db.Properties.Include("Images").Where(x => x.Images.Count() > 0).OrderByDescending(x => x.FechaPublicacion).ToPagedList(page, 3);
             }
         }
     }

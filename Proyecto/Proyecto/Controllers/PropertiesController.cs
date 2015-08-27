@@ -72,7 +72,6 @@ namespace Proyecto.Controllers
                 }
                 
                 db.SaveChanges();
-
                 
                 return RedirectToAction("/../Images/Create", new { idProp = property.Id });
             }

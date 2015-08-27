@@ -398,11 +398,11 @@ namespace Proyecto.Controllers
 
         //
         // POST: /Account/LogOff
-        [HttpPost,HttpGet]
-        [ValidateAntiForgeryToken]
+        [HttpGet]
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
+            Request.Cookies.Clear();
             return RedirectToAction("Index", "Home");
         }
 
@@ -492,5 +492,7 @@ namespace Proyecto.Controllers
             }
         }
         #endregion
+
+
     }
 }
