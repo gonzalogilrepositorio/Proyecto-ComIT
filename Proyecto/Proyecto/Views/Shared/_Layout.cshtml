@@ -12,6 +12,7 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="/Content/footerRedes.css">
     <link rel="stylesheet" href="/Content/galeria.css">
+    <link rel="stylesheet" href="/Content/bootstrap.css">
 
 </head>
 <body>
@@ -34,13 +35,9 @@
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="/../Home/Index"><b>Home</b></a></li>
-                        <!--<li><a href="#">Publicaciones</a></li>-->
-                        <li><a href="#"><b>Servicios</b></a></li>
-                        <li><a href="#"><b>Inversiones</b></a></li>
-                        <li><a href="#"><b>Sobre Nosotros</b></a></li>
-
-                        <li><a href="/contacto.html"><b>Contacto</b></a></li>
+                        <li><a href="/../Home/Index"><b>Home</b></a></li>                       
+                        <li><a href="#"><b>Quienes Somos</b></a></li>
+                        <li><a href="/../Home/Contact"><b>Contacto</b></a></li>
                     </ul>
                     @Html.Partial("_LoginPartial")
                 </div>
@@ -48,29 +45,34 @@
         </nav><!-- cierre de menu -->
     </header>
 
-    <div class="container">
+   <div class="container">
         @RenderBody()
     </div>
 
-    <footer style="background-color:#395c82;">
-        <!--style="background-color:#395c82;"-->
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="col-lg-4 col-lg-offset-4" style="text-align:center;">
-                    <ul class="social-network social-circle">
-                        <li><a href="HTTP://FACEBOOK.COM/GONZALO.2309" class="icoFacebook" title="Facebook"><i class="fa fa-facebook" id="fb"></i></a></li>
-                        <li><a href="https://twitter.com/gonzafg23" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="https://plus.google.com/u/0/101441902108132395536/posts" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-                    </ul>
+    @*<footer class="clear-top" style="background-color:#bf3e11; z-index:1;" >*@
+
+    <div class="navbar navbar-inverse navbar-fixed-bottom">
+        <div class="container">
+            <!--style="background-color:#395c82;"-->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-lg-4 col-lg-offset-4" style="text-align:center;">
+                        <ul class="social-network social-circle">
+                            <li><a href="HTTP://FACEBOOK.COM/GONZALO.2309" class="icoFacebook" title="Facebook"><i class="fa fa-facebook" id="fb"></i></a></li>
+                            <li><a href="https://twitter.com/gonzafg23" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="https://plus.google.com/u/0/101441902108132395536/posts" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </footer>
+    </div>
+    
 
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("/bundles/jquery")
+    @Scripts.Render("/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
 

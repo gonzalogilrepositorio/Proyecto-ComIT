@@ -37,8 +37,14 @@ a.socialIcon:hover, .socialHoverClass {
 	color:#44BCDD;
 }
 .abajo {
-    bottom: 0px;
-    
+    /*bottom: 0px;
+    position:relative;
+    width:100%;
+    margin-bottom:0px;*/
+    /*position: fixed;
+        height: 100px;
+        bottom: 0;
+        width: 100%;*/
     
 }
 

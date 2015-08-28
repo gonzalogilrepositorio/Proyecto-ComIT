@@ -28,7 +28,7 @@ namespace Proyecto.Controllers
         // GET: Properties/Details/5
         public ActionResult Details(int id)
         {
-            Property property = db.Properties.Find(id);
+            Property property = db.Properties.Include("Locality").Include("Category").Include("PropertyType").FirstOrDefault(x => x.Id == id);
             
             if (property == null)
             {
@@ -39,8 +39,11 @@ namespace Proyecto.Controllers
                         where p.PropertyId == id
                         orderby p.Id ascending
                         select p).ToList();
-
+           
             ViewBag.imageList = images;
+            property.Locality = db.Localities.Find(property.LocalityId);
+            //property.Category= db.Categories.Find(property.)
+            
             return View(property);
         }
 
