@@ -182,6 +182,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetContexto.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Email.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\Locality.cs" />
@@ -284,6 +285,7 @@
     <Content Include="Views\Home\_List.cshtml" />
     <Content Include="Views\Images\Edit.cshtml" />
     <Content Include="Views\Manage\Index - Copia.cshtml" />
+    <Content Include="Views\Home\Sent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
