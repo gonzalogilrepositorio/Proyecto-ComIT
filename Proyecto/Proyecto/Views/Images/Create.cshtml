@@ -127,36 +127,18 @@
                     <br />
                     <img id="img8" src="#" alt="your image" style="width: 300px; height: 200px;" class="img-responsive"/>
                 </div>
+            </div>                
+            <div class=" row">
+                <div class="input-group image-preview">
+                    <input type="submit" name="Create" id="Create" value="Create" />
+
+                </div>
             </div>
-            <br /><br /><br /><br /><br />
-            <input type="text" name="idProp" id="idProp" value="@ViewBag.PropertyId" />
-
-            <input type="button" id="btn" value="Cargar otra" /><br /><br /><br /><br /><br />
+            <br /><br /><br /><br /><br /><br /><br /><br /><br />
 
 
-
-            <div class="input-group image-preview">
-                
-                <span class="input-group-btn">
-                    <!-- image-preview-clear button -->
-                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
-                        <span class="glyphicon glyphicon-remove"></span> Clear
-                    </button>
-                    <!-- image-preview-input -->
-                    <div class="btn btn-default image-preview-input">
-                        <span class="glyphicon glyphicon-folder-open"></span>
-                        <span class="image-preview-input-title">Browse</span>
-                        <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" /> <!-- rename it -->
-                    </div>
-                </span>
-                <input type="text" class="form-control image-preview-filename" disabled="disabled">
-            </div><!-- /input-group image-preview [TO HERE]--> 
             
-
-            <br /><br /><br /><br /><br />
-
-            @*Botón para guardar los valores*@
-            <input type="submit" name="Create" id="Create" value="Create" />
+           
         </div>
     }
 </div>
