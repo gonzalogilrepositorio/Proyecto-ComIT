@@ -2982,7 +2982,7 @@ select[multiple].input-lg {
 }
 @media (min-width: 768px) {
   .form-horizontal .control-label {
-    text-align: left;
+    text-align: right;
     margin-bottom: 0;
     padding-top: 9px;
   }
@@ -4641,7 +4641,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   color: #cccccc;
 }
 .navbar-inverse {
-  background-color: #772953;
+  background-color: #bf3e11;
   border-color: #511c39;
 }
 .navbar-inverse .navbar-brand {
