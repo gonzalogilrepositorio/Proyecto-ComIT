@@ -28,7 +28,7 @@ namespace Proyecto.Controllers
         // GET: Properties/Details/5
         public ActionResult Details(int id)
         {
-            Property property = db.Properties.Find(id);
+            Property property = db.Properties.Include("Locality").Include("Category").Include("PropertyType").FirstOrDefault(x => x.Id == id);
             
             if (property == null)
             {
@@ -41,6 +41,7 @@ namespace Proyecto.Controllers
                         select p).ToList();
 
             ViewBag.imageList = images;
+
             return View(property);
         }
 
@@ -83,7 +84,6 @@ namespace Proyecto.Controllers
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Nombre", property.CategoryId);
             ViewBag.LocalityId = new SelectList(db.Localities, "Id", "Nombre", property.LocalityId);
             ViewBag.PropertyTypeId = new SelectList(db.PropertyTypes, "Id", "Nombre", property.PropertyTypeId);
-            //ViewBag.UserId = new SelectList(db.Users, "Id", "Nombre", property.UserId);
             //return View("/../Views/Home/index");
             return RedirectToAction("/../Home/Index");
         }
@@ -105,11 +105,6 @@ namespace Proyecto.Controllers
                 return Redirect("/?error=NotProperty");
             }
 
-            //Property property = db.Properties.Find(id);
-            //if (property == null)
-            //{
-            //    return HttpNotFound();
-            //}
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Nombre", prop.CategoryId);
             ViewBag.LocalityId = new SelectList(db.Localities, "Id", "Nombre", prop.LocalityId);
             ViewBag.PropertyTypeId = new SelectList(db.PropertyTypes, "Id", "Nombre", prop.PropertyTypeId);
@@ -122,7 +117,7 @@ namespace Proyecto.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Edit([Bind(Include = "Id,Titulo,Descripcion,Direccion,Latitud,Longitud,Ambientes,Baños,Cochera,GasNatural,Amoblado,AireAcond,Niños,Mascotas,MtsCuadrados,Precio,Estado,TiempoRestante,FechaPublicacion,LocalityId,PropertyTypeId,CategoryId,UserId")] Property property)
+        public ActionResult Edit([Bind(Include = "Id,Titulo,Descripcion,Direccion,Latitud,Longitud,Ambientes,Baños,Cochera,GasNatural,Amoblado,AireAcond,Niños,Mascotas,MtsCuadrados,Precio,Estado,TiempoRestante,FechaPublicacion,LocalityId,PropertyTypeId,CategoryId")] Property property)
         {
             
             if (ModelState.IsValid)
@@ -134,7 +129,6 @@ namespace Proyecto.Controllers
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Nombre", property.CategoryId);
             ViewBag.LocalityId = new SelectList(db.Localities, "Id", "Nombre", property.LocalityId);
             ViewBag.PropertyTypeId = new SelectList(db.PropertyTypes, "Id", "Nombre", property.PropertyTypeId);
-            //ViewBag.UserId = new SelectList(db.Users, "Id", "Nombre", property.UserId);
             return View(property);
         }
 
@@ -171,6 +165,14 @@ namespace Proyecto.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        //[HttpPost]
+        public ActionResult EnviarEmail()
+        {
+
+
+            return View("");
         }
     }
 }

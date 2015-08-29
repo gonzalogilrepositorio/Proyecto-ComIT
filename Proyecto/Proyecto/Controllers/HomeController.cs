@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Net;//se agrego para enviar email
+using System.Net.Mail;//se agrego para enviar email
+using System.Threading.Tasks;//se agrego para enviar email, en el metodo contact
 
 namespace Proyecto.Controllers
 {
@@ -42,6 +45,43 @@ namespace Proyecto.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Contact(Email model)
+        {
+            if (ModelState.IsValid)
+            {
+                var body = "<p>Email de: {0} ({1})</p></br></br></br><p>Mensaje:</p><p>{2}</p>";
+                var message = new MailMessage();
+                message.To.Add(new MailAddress("benzoemma@gmail.com"));  // a quien se lo envia
+                message.From = new MailAddress("ebenzo@ulp.edu.ar");  // quien lo envia
+                message.Subject = "Envio desde alquilados.com";
+                message.Body = string.Format(body, model.FromName, model.FromEmail, model.Message);
+                message.IsBodyHtml = true;
+
+                using (var smtp = new SmtpClient())
+                {
+                    var credential = new NetworkCredential
+                    {
+                        UserName = "ebenzo@ulp.edu.ar",  // replace with valid value
+                        Password = "Emma123="  // replace with valid value
+                    };
+                    smtp.Credentials = credential;
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.Port = 587;
+                    smtp.EnableSsl = true;
+                    await smtp.SendMailAsync(message);
+                    return RedirectToAction("Sent");
+                }
+            }
+            return View(model);
+        }
+
+        public ActionResult Sent()
+        {
             return View();
         }
 
