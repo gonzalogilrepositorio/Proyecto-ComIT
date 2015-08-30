@@ -54,11 +54,11 @@ namespace Proyecto.Controllers
         {
             if (ModelState.IsValid)
             {
-                var body = "<p>Email de: {0} ({1})</p></br></br></br><p>Mensaje:</p><p>{2}</p>";
+                var body = "<p>Petición de Contacto de: {0} ({1})</p></br></br></br><p>Mensaje:</p><p>{2}</p>";
                 var message = new MailMessage();
-                message.To.Add(new MailAddress("benzoemma@gmail.com"));  // a quien se lo envia
-                message.From = new MailAddress("ebenzo@ulp.edu.ar");  // quien lo envia
-                message.Subject = "Envio desde alquilados.com";
+                message.To.Add(new MailAddress("alquiladosanluis@gmail.com"));  // a quien se lo envia tomarlo desde la propiedad enviar q copia el propiertario y al interesado
+                message.From = new MailAddress("alquiladosanluis@gmail.com");  // quien lo envia
+                message.Subject = "Peticion de Contacto: "+model.FromName;
                 message.Body = string.Format(body, model.FromName, model.FromEmail, model.Message);
                 message.IsBodyHtml = true;
 
@@ -66,8 +66,8 @@ namespace Proyecto.Controllers
                 {
                     var credential = new NetworkCredential
                     {
-                        UserName = "ebenzo@ulp.edu.ar",  // replace with valid value
-                        Password = "Emma123="  // replace with valid value
+                        UserName = "alquiladosanluis@gmail.com",  // replace with valid value
+                        Password = "gonzaema123"  // replace with valid value
                     };
                     smtp.Credentials = credential;
                     smtp.Host = "smtp.gmail.com";
